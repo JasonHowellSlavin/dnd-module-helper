@@ -1,0 +1,59 @@
+.active {
+    color: white;
+    background-color: #98BB98;
+}
+
+.inactive {
+    color: grey;
+    background-color: white;
+}
+
+.monster {
+    min-width: 50px;
+    height: 25px;
+}
+
+.monster-mash {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px;
+}
+
+.monster-selections {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+
+    p {
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0 5px;
+        padding: 0 5px;
+        box-shadow:  0 -3px 4px 0.5px #878787;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border: 1px solid black;
+        border-bottom: none;
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.monster-stats {
+    background-color: #98BB98;
+    box-shadow:  0 5px 8px 2px #878787;
+    margin-left: 5px;
+    border: 1px solid black;
+    border-top: none;
+    position: relative;
+
+    p {
+        margin-left: 5px;
+        color: white;
+    }
+}
