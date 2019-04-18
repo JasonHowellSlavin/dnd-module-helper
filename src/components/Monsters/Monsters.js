@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './Monsters.scss';
 import AbilityScores from '../Utility/AbilityScores.js';
 import Characteristics from '../Utility/Characteristics.js';
+import Attributes from '../Utility/Attributes.js';
+import Image from '../Utility/Image.js';
+import Notes from '../Utility/Notes.js';
+
 
 class Monsters extends Component {
     constructor(props) {
@@ -47,8 +51,11 @@ class Monsters extends Component {
                     <div key={`stats:${elem.name}`}>
                         <p>Location: {elem.location}</p>
                         <section className="stats-layout">
-                            {elem.abilityScores && <AbilityScores abilityScore={elem.abilityScores} name={elem.name} />}
+                            {elem.image && <Image url={elem.image} />}
+                            {elem.attributes && <Attributes attributes={elem.attributes} name={elem.name} />}
                             {elem.traits && elem.actions && <Characteristics traits={elem.traits} actions={elem.actions} name={elem.name} />}
+                            {elem.abilityScores && <AbilityScores abilityScore={elem.abilityScores} name={elem.name} />}
+                            { <Notes />}
                         </section>
                         <section>
                         </section>
