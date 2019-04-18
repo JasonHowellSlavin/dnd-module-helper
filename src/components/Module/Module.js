@@ -13,7 +13,7 @@ class Module extends Component {
             <div>
                 <p>Title: {this.props.title}</p>
                 <section className="monsters">
-                    <Monsters monsters={this.props.specifics.monsters} />
+                    {this.props.specifics && this.props.specifics.monsters && <Monsters monsters={this.props.specifics.monsters} />}
                 </section>
             </div>
         )

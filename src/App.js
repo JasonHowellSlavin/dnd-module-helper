@@ -20,13 +20,13 @@ class App extends Component {
             <Router>
                 <div>
                     {this.state.module.locations.map(elem =>
-                          <li><Link to={elem.path}>{elem.title}</Link></li>
+                          <li><Link to={elem.path} key={`path:${elem.path}`}>{elem.title}</Link></li>
                     )}
                 </div>
                 <div>
                     {this.state.module.locations.map(elem =>
                           <Route path={elem.path} key={elem.title}
-                          render={(props) => <Module {...props} title={elem.title} path={elem.path} specifics={elem.specifics} />} />
+                          render={(props) => <Module {...props} title={elem.title} path={elem.path} specifics={elem.specifics} key={`Module:${elem.title}`} />} />
                     )}
                 </div>
             </Router>

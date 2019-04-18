@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import './Monsters.scss';
+import AbilityScores from '../Utility/AbilityScores.js';
+import Characteristics from '../Utility/Characteristics.js';
 
 class Monsters extends Component {
     constructor(props) {
         super(props);
         this.state = {
             activeMonster: '',
-            lowlife: 'yes',
         };
         this.toggleMonster = this.toggleMonster.bind(this);
+        this.sortMonstersByModuleNum = this.sortMonstersByModuleNum.bind(this);
+    }
+
+    sortMonstersByModuleNum(monsterArr) {
+        return monsterArr.sort((a, b) => { return a.moduleNum - b.moduleNum });
     }
 
     toggleMonster(name) {
@@ -17,7 +23,11 @@ class Monsters extends Component {
     }
 
     componentDidMount() {
-        this.setState({activeMonster: this.props.monsters[0].name});
+        this.sortMonstersByModuleNum(this.props.monsters);
+
+        this.setState({
+            activeMonster: this.props.monsters[0].name,
+        });
     }
 
     render() {
@@ -34,8 +44,14 @@ class Monsters extends Component {
                 <section className="monster-stats">
                 {this.props.monsters.map(elem =>
                     elem.name === this.state.activeMonster &&
-                    <div>
+                    <div key={`stats:${elem.name}`}>
                         <p>Location: {elem.location}</p>
+                        <section className="stats-layout">
+                            {elem.abilityScores && <AbilityScores abilityScore={elem.abilityScores} name={elem.name} />}
+                            {elem.traits && elem.actions && <Characteristics traits={elem.traits} actions={elem.actions} name={elem.name} />}
+                        </section>
+                        <section>
+                        </section>
                     </div>
                 )}
                 </section>
